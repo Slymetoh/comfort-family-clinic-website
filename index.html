@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Comfort Family Clinic provides trusted pediatric care for infants, children, and adolescents in Wilmington, CA." />
+  <title>Comfort Family Clinic | Pediatric Care in Wilmington, CA</title>
+  <style>
+    :root {
+      --blue: #075dcc;
+      --blue-2: #0054c8;
+      --blue-dark: #043b89;
+      --navy: #101936;
+      --text: #263248;
+      --muted: #596579;
+      --line: #e3e8f0;
+      --soft: #f6f8fb;
+      --soft-blue: #eef6ff;
+      --white: #ffffff;
+      --shadow: 0 18px 45px rgba(16, 25, 54, .10);
+      --shadow-soft: 0 8px 24px rgba(16, 25, 54, .07);
+      --radius: 18px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    /* Offset anchor scrolling so sections don't land underneath the sticky header */
+    main#top,
+    section[id] {
+      scroll-margin-top: 96px;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: #fff;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.42;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .container {
+      width: min(var(--max), calc(100% - 56px));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid rgba(227,232,240,.92);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-wrap {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      gap: 38px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      flex: 0 0 auto;
+    }
+
+    .brand img {
+      width: 200px;
+      max-height: 90px;
+      object-fit: contain;
+      object-position: left center;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      margin-left: auto;
+      font-size: 16px;
+      font-weight: 750;
+      color: var(--navy);
+      white-space: nowrap;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 30px 0 27px;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--blue); }
+
+    .nav-links a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 21px;
+      height: 3px;
+      border-radius: 99px;
+      background: var(--blue);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-left: 30px;
+      white-space: nowrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 50px;
+      padding: 14px 24px;
+      border: 1.7px solid var(--blue);
+      border-radius: 13px;
+      font-weight: 850;
+      font-size: 16px;
+      line-height: 1;
+      color: var(--blue);
+      background: #fff;
+      cursor: pointer;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+    }
+
+    .btn svg { width: 20px; height: 20px; flex: 0 0 auto; }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 12px 28px rgba(7,93,204,.16); }
+    .btn-primary { color: #fff; background: var(--blue); }
+    .btn-primary:hover { background: var(--blue-dark); }
+    .btn-secondary { background: #fff; }
+
+    .mobile-toggle { display: none; }
+    .mobile-menu { display: none; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 86% 11%, rgba(7,93,204,.09), transparent 36%),
+        linear-gradient(180deg,#fff 0%,#f7fbff 100%);
+    }
+
+    .hero-grid {
+      min-height: 356px;
+      display: grid;
+      grid-template-columns: 1fr .95fr;
+      align-items: center;
+      gap: 40px;
+      padding: 24px 0 52px;
+    }
+
+    h1, h2, h3 { margin: 0; color: var(--navy); letter-spacing: -.04em; line-height: 1.06; }
+
+    h1 {
+      max-width: 560px;
+      font-size: clamp(2.35rem, 4.15vw, 3.35rem);
+      font-weight: 850;
+    }
+
+    .hero-copy p {
+      margin: 18px 0 0;
+      max-width: 575px;
+      color: #313b51;
+      font-size: 1.02rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 23px;
+    }
+
+    .trust-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      row-gap: 16px;
+      column-gap: 36px;
+      max-width: 620px;
+      margin-top: 26px;
+    }
+
+    .trust-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--navy);
+      font-size: 19px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .trust-icon,
+    .info-icon,
+    .small-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      color: #fff;
+      background: var(--blue);
+    }
+
+    .trust-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #e3f3ea;
+      color: #2fae6b;
+      font-size: 16px;
+      font-weight: 900;
+    }
+    .trust-icon svg { width: 16px; height: 16px; }
+
+    @media (max-width: 560px) {
+      .trust-item { font-size: 16px; }
+    }
+
+    .hero-photo {
+      position: absolute;
+      inset: 0 0 0 auto;
+      width: 50%;
+      min-height: 100%;
+      overflow: hidden;
+      box-shadow: none;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .quick-info {
+      position: relative;
+      z-index: 5;
+      margin-top: -42px;
+    }
+
+    .info-card {
+      display: grid;
+      grid-template-columns: 1.08fr .98fr 1.35fr;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      box-shadow: var(--shadow);
+    }
+
+    .info-item {
+      display: grid;
+      grid-template-columns: 46px 1fr;
+      align-items: center;
+      gap: 22px;
+      min-height: 128px;
+      padding: 30px 38px;
+      border-right: 1px solid var(--line);
+    }
+
+    .info-item:last-child { border-right: 0; }
+    .info-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      align-self: center;
+      justify-self: center;
+      color: var(--blue);
+      background: transparent;
+    }
+    .info-icon svg {
+      width: 34px;
+      height: 34px;
+      display: block;
+      flex: 0 0 auto;
+      color: var(--blue);
+    }
+    .info-item strong { display: block; margin-bottom: 7px; color: var(--navy); font-size: 18px; font-weight: 900; }
+    .info-item span { display: block; color: #2f3b52; font-size: 16.5px; line-height: 1.36; }
+
+    section { padding: 34px 0; }
+
+    .services {
+      background: #fff;
+      padding-top: 28px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .support-photo {
+      min-height: 210px;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .support-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .services-content h2 {
+      margin: 13px 0 20px;
+      font-size: 1.55rem;
+      text-align: left;
+    }
+
+    .service-cards {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .service-card {
+      min-height: 165px;
+      padding: 21px 14px 18px;
+      text-align: center;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      box-shadow: 0 8px 20px rgba(16,25,54,.07);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    .service-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-soft); }
+
+    .card-icon {
+      width: 45px;
+      height: 45px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 13px;
+      color: var(--blue);
+    }
+
+    .card-icon svg { width: 44px; height: 44px; stroke-width: 1.9; }
+
+    .service-card h3 {
+      min-height: 38px;
+      font-size: .93rem;
+      letter-spacing: -.025em;
+      line-height: 1.12;
+    }
+
+    .service-card p {
+      margin: 9px 0 0;
+      color: #445066;
+      font-size: .78rem;
+      line-height: 1.25;
+    }
+
+    .doctor-section { background: #fff; padding-top: 0; }
+
+    .doctor-card {
+      display: grid;
+      grid-template-columns: 135px 1.15fr 1px 1fr;
+      align-items: center;
+      gap: 28px;
+      padding: 18px 28px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .doctor-photo {
+      width: 120px;
+      height: 140px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 10px;
+      background: var(--soft);
+      box-shadow: 0 8px 18px rgba(16,25,54,.10);
+    }
+
+    .doctor-info h2 { font-size: 1.05rem; margin-bottom: 4px; }
+    .doctor-info .doctor-name { display: block; margin-bottom: 4px; color: var(--blue); font-size: 1.35rem; font-weight: 850; letter-spacing: -.035em; }
+    .doctor-subtitle { color: var(--navy); font-weight: 650; }
+
+    .check-list {
+      display: grid;
+      gap: 6px;
+      margin: 12px 0 0;
+      padding: 0;
+      list-style: none;
+      color: #3b455a;
+      font-size: 13px;
+    }
+
+    .check-list li { display: flex; gap: 8px; align-items: flex-start; }
+    .check-list li::before {
+      content: "✓";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 18px;
+      width: 18px;
+      height: 18px;
+      margin-top: 1px;
+      border-radius: 999px;
+      color: #fff;
+      background: var(--blue);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .doctor-divider { height: 122px; width: 1px; background: var(--line); }
+
+    .doctor-quote { padding-right: 14px; }
+    blockquote { margin: 7px 0 0; color: #303b51; font-style: italic; font-size: 14px; line-height: 1.4; }
+    blockquote cite { display: block; margin-top: 14px; color: var(--blue); font-style: normal; font-weight: 800; }
+
+    .insurance { background: #fff; padding-top: 0; }
+
+    .insurance-panel {
+      padding: 22px 34px 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .insurance-panel h2 { margin-bottom: 15px; font-size: 1.25rem; }
+
+    .insurance-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 80px;
+      max-width: 1000px;
+    }
+
+    .insurance-item {
+      display: grid;
+      grid-template-columns: 74px 1fr;
+      align-items: center;
+      gap: 17px;
+      min-height: 62px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .insurance-item:nth-last-child(-n + 2) { border-bottom: 0; }
+
+    .insurance-logo {
+      width: 74px;
+      height: 56px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 3px 9px rgba(16,25,54,.04);
+      overflow: hidden;
+      padding: 6px;
+    }
+    .insurance-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .insurance-name { color: var(--navy); font-size: 1.05rem; font-weight: 500; }
+
+    .see-plans {
+      display: inline-flex;
+      margin-top: 9px;
+      border: 0;
+      padding: 0;
+      background: transparent;
+      color: var(--blue-dark);
+      font: inherit;
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      cursor: pointer;
+    }
+
+    .insurance-note { margin: 8px 0 0; color: var(--muted); font-size: 13px; }
+
+    .visit { background: #fff; padding-top: 0; padding-bottom: 22px; }
+
+    .visit-card {
+      display: grid;
+      grid-template-columns: 1.18fr .94fr;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid #cbdfff;
+      border-radius: 15px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .visit-image { min-height: 166px; }
+    .visit-image img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+
+    .visit-info {
+      display: grid;
+      align-content: center;
+      gap: 16px;
+      padding: 34px 42px;
+      background: linear-gradient(135deg, #eaf4ff 0%, #fff 100%);
+    }
+
+    .visit-info h2 { color: var(--blue-dark); font-size: 1.9rem; margin-bottom: 4px; line-height: 1.08; }
+    .visit-line { display: grid; grid-template-columns: 34px 1fr; gap: 14px; align-items: start; color: #303b51; font-size: 18px; line-height: 1.3; }
+    .small-icon { width: 30px; height: 30px; border-radius: 9px; color: var(--blue); background: #fff; border: 1px solid #cbdfff; }
+    .small-icon svg { width: 18px; height: 18px; }
+
+    .site-footer {
+      padding: 24px 0 16px;
+      background: #f2f7ff;
+      border-top: 1px solid #dbeafe;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: .95fr 1.25fr 1.1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .footer-logo img { width: 128px; }
+    .footer-col h3 { margin: 0 0 9px; color: var(--blue-dark); font-size: 14px; }
+    .footer-col p,
+    .footer-col a { display: block; margin: 5px 0; color: #394255; font-size: 13px; }
+    .footer-bottom { margin-top: 14px; text-align: center; color: #607086; font-size: 12px; }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: rgba(16,25,54,.48);
+    }
+
+    .modal-backdrop.active { display: flex; }
+
+    .modal {
+      width: min(560px, 100%);
+      max-height: 88vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      border-radius: 9px;
+      box-shadow: 0 30px 80px rgba(16,25,54,.35);
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 25px 32px 12px;
+    }
+
+    .modal-header h2 { font-size: 1.65rem; letter-spacing: -.03em; }
+    .close-modal { width: 42px; height: 42px; border: 0; border-radius: 5px; background: #f4f5f7; color: #2f3545; font-size: 30px; line-height: 1; cursor: pointer; }
+    .modal-body { overflow-y: auto; padding: 9px 32px 30px; }
+
+    .accordion { border-bottom: 1px solid transparent; }
+    .accordion button { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 17px 0; border: 0; background: transparent; color: var(--navy); font-size: 1.08rem; font-weight: 650; text-align: left; cursor: pointer; }
+    .chev { transition: transform .2s ease; font-size: 1.25rem; }
+    .accordion.open .chev { transform: rotate(180deg); }
+    .accordion-panel { display: none; padding: 0 0 14px; color: var(--muted); font-size: 14px; }
+    .accordion.open .accordion-panel { display: block; }
+    .accordion-panel ul { display: grid; gap: 6px; margin: 0; padding-left: 18px; }
+    .modal-disclaimer { margin-top: 18px; padding: 14px; border-radius: 12px; background: var(--soft-blue); color: #29415f; font-size: 13px; }
+
+    @media (max-width: 1040px) {
+      .brand img { width: 132px; }
+      .nav-wrap { gap: 22px; }
+      .nav-links { gap: 20px; }
+      .header-actions { margin-left: 12px; }
+      .btn { padding-inline: 15px; }
+      .service-cards { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .services-grid { grid-template-columns: 320px 1fr; }
+    }
+
+    @media (max-width: 860px) {
+      .container { width: min(100% - 32px, var(--max)); }
+      .nav-wrap { justify-content: space-between; }
+      .nav-links, .header-actions { display: none; }
+      .mobile-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        border: 1px solid var(--line);
+        border-radius: 11px;
+        background: #fff;
+        color: var(--navy);
+        font-size: 24px;
+        cursor: pointer;
+      }
+      .mobile-menu {
+        display: none;
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        top: 72px;
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: #fff;
+        box-shadow: var(--shadow);
+        gap: 10px;
+      }
+      .nav-wrap.mobile-open .mobile-menu { display: grid; }
+      .mobile-menu a, .mobile-menu .btn { width: 100%; justify-content: center; }
+      .mobile-menu a.active { color: var(--blue); }
+      .hero-grid, .services-grid, .visit-card { grid-template-columns: 1fr; }
+      .hero-grid { padding: 34px 0 72px; gap: 26px; }
+      .hero-photo { min-height: 330px; border-radius: 18px; }
+      .quick-info { margin-top: -32px; }
+      .info-card { grid-template-columns: 1fr; }
+      .info-item { min-height: 104px; padding: 24px 26px; border-right: 0; border-bottom: 1px solid var(--line); }
+      .info-item:last-child { border-bottom: 0; }
+      .doctor-card { grid-template-columns: 120px 1fr; align-items: start; }
+      .doctor-divider { display: none; }
+      .doctor-quote { grid-column: 1 / -1; padding: 18px 0 0; border-top: 1px solid var(--line); }
+      .insurance-grid { grid-template-columns: 1fr; column-gap: 0; }
+      .insurance-item:nth-last-child(-n + 2) { border-bottom: 1px solid var(--line); }
+      .insurance-item:last-child { border-bottom: 0; }
+      .footer-grid { grid-template-columns: 1fr; gap: 22px; }
+    }
+
+    @media (max-width: 560px) {
+      .brand img { width: 100px; }
+      h1 { font-size: 2.6rem; }
+      .hero-actions, .visit-info .hero-actions { flex-direction: column; }
+      .btn { width: 100%; }
+      .services-content h2 { text-align: left; }
+      .service-cards { grid-template-columns: 1fr; }
+      .doctor-card, .insurance-panel, .visit-info { padding: 22px; }
+      .doctor-card { grid-template-columns: 1fr; }
+      .doctor-photo { width: 126px; height: 145px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap" id="navWrap">
+      <a class="brand" href="#top" aria-label="Comfort Family Clinic home">
+        <img src="./assets/logoh.png" alt="Comfort Family Clinic logo" />
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a class="active" href="#top">Home</a>
+        <a href="#doctor">About</a>
+        <a href="#services">Services</a>
+        <a href="#insurance">Insurance</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="btn btn-primary" href="tel:+13108163111" aria-label="Call Comfort Family Clinic">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.28-.28.67-.36 1.02-.25 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2Z"/></svg>
+          Call Now
+        </a>
+        <a class="btn btn-secondary" href="https://www.google.com/maps/dir/?api=1&destination=936+Wilmington+Blvd,+Wilmington,+CA+90744" target="_blank" rel="noopener" aria-label="Get directions to Comfort Family Clinic">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/></svg>
+          Get Directions
+        </a>
+      </div>
+
+      <button class="mobile-toggle" type="button" aria-label="Open menu" aria-expanded="false" id="mobileToggle">☰</button>
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="#top">Home</a>
+        <a href="#doctor">About</a>
+        <a href="#services">Services</a>
+        <a href="#insurance">Insurance</a>
+        <a href="#contact">Contact</a>
+        <a href="https://www.facebook.com/comfortfamilyclinic/" target="_blank" rel="noopener">Facebook</a>
+        <a class="btn btn-primary" href="tel:+13108163111">Call Now</a>
+        <a class="btn btn-secondary" href="https://www.google.com/maps/dir/?api=1&destination=936+Wilmington+Blvd,+Wilmington,+CA+90744" target="_blank" rel="noopener">Get Directions</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" id="home-section" aria-label="Comfort Family Clinic introduction">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <h1>Compassionate Pediatric Care for Every Stage of Childhood</h1>
+          <p>Comfort Family Clinic provides trusted pediatric care for infants, children, and adolescents in Wilmington, CA.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="tel:+13108163111">
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.28-.28.67-.36 1.02-.25 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2Z"/></svg>
+              Call Now
+            </a>
+            <a class="btn btn-secondary" href="https://www.google.com/maps/dir/?api=1&destination=936+Wilmington+Blvd,+Wilmington,+CA+90744" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/></svg>
+              Get Directions
+            </a>
+          </div>
+          <div class="trust-line">
+            <span class="trust-item"><span class="trust-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m9.55 16.65-4.2-4.2 1.4-1.4 2.8 2.8 7.7-7.7 1.4 1.4-9.1 9.1Z"/></svg></span>Black-owned</span>
+            <span class="trust-item"><span class="trust-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m9.55 16.65-4.2-4.2 1.4-1.4 2.8 2.8 7.7-7.7 1.4 1.4-9.1 9.1Z"/></svg></span>Women-owned</span>
+            <span class="trust-item"><span class="trust-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m9.55 16.65-4.2-4.2 1.4-1.4 2.8 2.8 7.7-7.7 1.4 1.4-9.1 9.1Z"/></svg></span>LGBTQ+ friendly</span>
+            <span class="trust-item"><span class="trust-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m9.55 16.65-4.2-4.2 1.4-1.4 2.8 2.8 7.7-7.7 1.4 1.4-9.1 9.1Z"/></svg></span>English, Spanish &amp; Igbo spoken</span>
+          </div>
+        </div>
+
+        <div class="hero-photo">
+          <img src="./assets/hero-child-doctor.png" alt="Pediatrician smiling with a young child during a checkup" />
+        </div>
+      </div>
+    </section>
+
+    <div class="quick-info" aria-label="Clinic quick information">
+      <div class="container">
+        <div class="info-card">
+          <div class="info-item">
+            <span class="info-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/></svg></span>
+            <div><strong>Address</strong><span>936 Wilmington Blvd,<br />Wilmington, CA 90744</span></div>
+          </div>
+          <div class="info-item">
+            <span class="info-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.28-.28.67-.36 1.02-.25 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2Z"/></svg></span>
+            <div><strong>Phone</strong><span>(310) 816-3111</span></div>
+          </div>
+          <div class="info-item">
+            <span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/></svg></span>
+            <div><strong>Hours</strong><span>Mon–Fri 9 AM–5 PM |<br />Closed weekends, holidays, and the last Friday of every month</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="services" class="services">
+      <div class="container services-grid">
+        <div class="support-photo"><img src="./assets/pediatric-exam.png" alt="Doctor checking a baby during a pediatric appointment" /></div>
+        <div class="services-content">
+          <h2>Our Pediatric Services</h2>
+          <div class="service-cards">
+            <article class="service-card">
+              <span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.7 6.3c1-1.7 3.5-2.4 5.1-1.2"/><circle cx="12" cy="13" r="7"/><circle cx="9.4" cy="12" r="0.9" fill="currentColor" stroke="none"/><circle cx="14.6" cy="12" r="0.9" fill="currentColor" stroke="none"/><path d="M9.6 15.6c.9.9 3.9.9 4.8 0"/></svg></span>
+              <h3>Well-Child Visits &amp; Annual Physicals</h3>
+              <p>Preventive care to keep your child healthy at every stage.</p>
+            </article>
+            <article class="service-card">
+              <span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g transform="rotate(45 12 12)"><rect x="10.4" y="1.5" width="3.2" height="2.2" rx="0.6"/><line x1="12" y1="3.7" x2="12" y2="6.3"/><rect x="9.6" y="6.3" width="4.8" height="8.6" rx="1"/><line x1="9.6" y1="9" x2="11.3" y2="9"/><line x1="9.6" y1="11.1" x2="11.3" y2="11.1"/><line x1="9.6" y1="13.2" x2="11.3" y2="13.2"/><line x1="12" y1="14.9" x2="12" y2="20.5"/><circle cx="12" cy="21.7" r="0.6" fill="currentColor" stroke="none"/></g></svg></span>
+              <h3>Immunizations</h3>
+              <p>Stay up to date on recommended vaccines for lasting protection.</p>
+            </article>
+            <article class="service-card">
+              <span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 8.6a5.4 5.4 0 0 0-9.2-3.8L12 5.2l.4-.4a5.4 5.4 0 1 1 7.6 7.6L12 20 4 12.4a5.4 5.4 0 0 1 7.6-7.6"/><path d="M12 8v6M9 11h6"/></svg></span>
+              <h3>Sick Visits &amp; Same-Day Care</h3>
+              <p>Compassionate care when your child isn’t feeling well.</p>
+            </article>
+            <article class="service-card">
+              <span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4h6l1 2h3v15H5V6h3l1-2Z"/><path d="M9 12h6M9 16h6M9 8h6"/></svg></span>
+              <h3>Referrals &amp; Diagnostic Orders</h3>
+              <p>Coordinated care and testing for your child’s needs.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="doctor" class="doctor-section">
+      <div class="container">
+        <div class="doctor-card">
+          <img class="doctor-photo" src="./assets/dr-thecla.png" alt="Dr. Thecla Mgbojirikwe, MD" />
+          <div class="doctor-info">
+            <h2>Meet the Doctor</h2>
+            <span class="doctor-name">Dr. Thecla Mgbojirikwe, MD</span>
+            <span class="doctor-subtitle">Board-Certified Pediatrician</span>
+            <ul class="check-list">
+              <li>University of Nigeria, Faculty of Medicine</li>
+              <li>American Board of Pediatrics</li>
+              <li>Languages: English, Spanish, Igbo</li>
+            </ul>
+          </div>
+          <div class="doctor-divider" aria-hidden="true"></div>
+          <div class="doctor-quote">
+            <blockquote>"Every child deserves to feel safe, heard, and cared for. I’m honored to partner with families in Wilmington to support their child’s health and well-being from the very beginning."<cite>— Dr. Thecla Mgbojirikwe, MD</cite></blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="insurance" class="insurance">
+      <div class="container">
+        <div class="insurance-panel">
+          <h2>In-network insurances</h2>
+          <div class="insurance-grid" aria-label="Featured insurance plans">
+            <div class="insurance-item"><span class="insurance-logo"><img src="./assets/aetna.png" alt="Aetna logo" /></span><span class="insurance-name">Aetna</span></div>
+            <div class="insurance-item"><span class="insurance-logo"><img src="./assets/bcbs.png" alt="Blue Cross Blue Shield logo" /></span><span class="insurance-name">Blue Cross Blue Shield</span></div>
+            <div class="insurance-item"><span class="insurance-logo"><img src="./assets/cigna.png" alt="Cigna logo" /></span><span class="insurance-name">Cigna</span></div>
+            <div class="insurance-item"><span class="insurance-logo"><img src="./assets/unitedhealthcare.png" alt="UnitedHealthcare logo" /></span><span class="insurance-name">UnitedHealthcare</span></div>
+          </div>
+          <button class="see-plans" type="button" id="openInsurance">See 150+ more in-network plans</button>
+          <p class="insurance-note">Insurance coverage can vary by plan. Please call <strong>(310) 816-3111</strong> to confirm your specific coverage.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="visit">
+      <div class="container">
+        <div class="visit-card">
+          <div class="visit-image"><img src="./assets/building.png" alt="Exterior of Comfort Family Clinic in Wilmington, California" /></div>
+          <div class="visit-info">
+            <h2>Visit Our Clinic</h2>
+            <div class="visit-line"><span class="small-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/></svg></span><span>936 Wilmington Blvd,<br />Wilmington, CA 90744</span></div>
+            <div class="visit-line"><span class="small-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.28-.28.67-.36 1.02-.25 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2Z"/></svg></span><a href="tel:+13108163111">(310) 816-3111</a></div>
+            <div class="visit-line"><span class="small-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 3v3M17 3v3M4 8h16M5 5h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/></svg></span><span>Closed on holidays and the<br />last Friday of every month.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-logo"><img src="./assets/logo.png" alt="Comfort Family Clinic logo" /></div>
+      <div class="footer-col"><h3>Contact Us</h3><p>936 Wilmington Blvd, Wilmington, CA 90744</p><a href="tel:+13108163111">(310) 816-3111</a><a href="https://www.facebook.com/comfortfamilyclinic/" target="_blank" rel="noopener">Facebook</a></div>
+      <div class="footer-col"><h3>Hours</h3><p>Mon–Fri 9 AM–5 PM</p><p>Closed weekends, holidays, and the last Friday of every month.</p></div>
+    </div>
+    <div class="container footer-bottom">© 2026 Comfort Family Clinic. All rights reserved.</div>
+  </footer>
+
+  <div class="modal-backdrop" id="insuranceModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="insuranceTitle">
+    <div class="modal">
+      <div class="modal-header"><h2 id="insuranceTitle">In-network insurances</h2><button class="close-modal" type="button" id="closeInsurance" aria-label="Close insurance list">×</button></div>
+      <div class="modal-body">
+        <div class="accordion open"><button type="button">Anthem Blue Cross <span class="chev">⌄</span></button><div class="accordion-panel"><ul><li>Anthem Blue Cross</li><li>Anthem CaliforniaCare HMO Premier</li><li>Blue Cross PPO / Prudent Buyer</li><li>Anthem Blue Cross Partnership plans</li></ul></div></div>
+        <div class="accordion"><button type="button">Tricare <span class="chev">⌄</span></button><div class="accordion-panel"><ul><li>West Region / UnitedHealthcare Military &amp; Veterans</li></ul></div></div>
+        <div class="accordion"><button type="button">Cigna <span class="chev">⌄</span></button><div class="accordion-panel"><ul><li>Choice Fund PPO</li><li>Open Access Plus</li></ul></div></div>
+        <div class="accordion"><button type="button">Medi-Cal <span class="chev">⌄</span></button><div class="accordion-panel"><ul><li>L.A. Care Health Plan</li><li>Health Net Community Solutions</li><li>Molina Healthcare Partnership</li><li>Care 1st Partner Plan</li><li>Other Medi-Cal managed care plans</li></ul></div></div>
+        <div class="accordion"><button type="button">Aetna <span class="chev">⌄</span></button><div class="accordion-panel"><ul><li>Open Choice PPO</li><li>Choice POS II Open Access</li><li>Health Fund plans</li></ul></div></div>
+        <div class="accordion"><button type="button">L.A. Care Health Plan <span class="chev">⌄</span></button><div class="accordion-panel"><ul><li>Cal MediConnect</li><li>Healthy Kids</li><li>Medi-Cal</li><li>Medicare</li></ul></div></div>
+        <div class="accordion"><button type="button">Blue Cross Blue Shield <span class="chev">⌄</span></button><div class="accordion-panel"><ul><li>BlueCard PPO</li><li>Blue Shield of California PPO</li><li>Blue Cross Blue Shield PPO plans</li><li>Participating Provider PPO networks</li></ul></div></div>
+        <div class="accordion"><button type="button">UnitedHealthcare <span class="chev">⌄</span></button><div class="accordion-panel"><ul><li>Choice Plus POS</li><li>MedicareComplete Choice Regional PPO</li></ul></div></div>
+        <div class="accordion"><button type="button">Other Plans <span class="chev">⌄</span></button><div class="accordion-panel"><ul><li>Medicaid</li><li>PASC-SEIU Plan</li><li>MO HealthNet</li><li>L.A. Care Covered</li></ul></div></div>
+        <div class="modal-disclaimer">This list is for general reference only. Please call <strong>(310) 816-3111</strong> to confirm whether your specific insurance plan is accepted before scheduling a visit.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navWrap = document.getElementById('navWrap');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const modal = document.getElementById('insuranceModal');
+    const openInsurance = document.getElementById('openInsurance');
+    const closeInsurance = document.getElementById('closeInsurance');
+
+    mobileToggle.addEventListener('click', () => {
+      const isOpen = navWrap.classList.toggle('mobile-open');
+      mobileToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navWrap.classList.remove('mobile-open');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    function openModal() {
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      closeInsurance.focus();
+    }
+
+    function closeModal() {
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      openInsurance.focus();
+    }
+
+    openInsurance.addEventListener('click', openModal);
+    closeInsurance.addEventListener('click', closeModal);
+    modal.addEventListener('click', event => { if (event.target === modal) closeModal(); });
+    document.addEventListener('keydown', event => { if (event.key === 'Escape' && modal.classList.contains('active')) closeModal(); });
+    document.querySelectorAll('.accordion > button').forEach(button => button.addEventListener('click', () => button.parentElement.classList.toggle('open')));
+  </script>
+</body>
+</html>
