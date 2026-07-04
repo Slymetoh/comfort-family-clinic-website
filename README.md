@@ -1,5 +1,4 @@
-[README.txt](https://github.com/user-attachments/files/29666523/README.txt)
-#Comfort Family Clinic Homepage
+Comfort Family Clinic Landing Page
 
 Open index.html in a browser to preview the site.
 
