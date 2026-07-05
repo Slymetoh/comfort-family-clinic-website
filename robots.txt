@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://slymetoh.github.io/comfort-family-clinic-website/sitemap.xml
