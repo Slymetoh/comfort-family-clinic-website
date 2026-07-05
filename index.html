@@ -605,7 +605,15 @@
 
     @media (max-width: 860px) {
       .container { width: min(100% - 32px, var(--max)); }
-      .nav-wrap { justify-content: space-between; }
+      .nav-wrap { justify-content: center; position: relative; }
+      .brand { margin: 0 auto; }
+      .brand img { width: 170px; }
+      .mobile-toggle {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+      }
       .nav-links, .header-actions { display: none; }
       .mobile-toggle {
         display: inline-flex;
@@ -638,7 +646,13 @@
       .mobile-menu a.active { color: var(--blue); }
       .hero-grid, .services-grid, .visit-card { grid-template-columns: 1fr; }
       .hero-grid { padding: 34px 0 72px; gap: 26px; }
-      .hero-photo { min-height: 330px; border-radius: 18px; }
+      .hero-photo {
+        position: relative;
+        inset: auto;
+        width: 100%;
+        min-height: 280px;
+        border-radius: 18px;
+      }
       .quick-info { margin-top: -32px; }
       .info-card { grid-template-columns: 1fr; }
       .info-item { min-height: 104px; padding: 24px 26px; border-right: 0; border-bottom: 1px solid var(--line); }
@@ -653,7 +667,7 @@
     }
 
     @media (max-width: 560px) {
-      .brand img { width: 100px; }
+      .brand img { width: 140px; }
       h1 { font-size: 2.6rem; }
       .hero-actions, .visit-info .hero-actions { flex-direction: column; }
       .btn { width: 100%; }
