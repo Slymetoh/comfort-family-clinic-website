@@ -144,6 +144,27 @@
     .mobile-toggle { display: none; }
     .mobile-menu { display: none; }
 
+    .video-banner {
+      position: relative;
+      width: 100%;
+      height: clamp(280px, 46vw, 560px);
+      overflow: hidden;
+      background: #0b1220;
+    }
+
+    .video-banner video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    @media (max-width: 860px) {
+      .video-banner { height: clamp(220px, 62vw, 400px); }
+    }
+
     .hero {
       position: relative;
       overflow: hidden;
@@ -718,6 +739,10 @@
       </div>
     </div>
   </header>
+
+  <div class="video-banner" aria-label="Comfort Family Clinic video">
+    <video src="./assets/hero-video.mp4" poster="./assets/hero-video-poster.jpg" autoplay muted loop playsinline></video>
+  </div>
 
   <main id="top">
     <section class="hero" id="home-section" aria-label="Comfort Family Clinic introduction">
