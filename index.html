@@ -7,6 +7,9 @@
   <link rel="canonical" href="https://slymetoh.github.io/comfort-family-clinic-website/">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --blue: #075dcc;
@@ -159,6 +162,35 @@
       height: 100%;
       object-fit: cover;
       object-position: center;
+    }
+
+    .video-banner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(6,14,30,.55) 0%, rgba(6,14,30,.15) 32%, rgba(6,14,30,0) 55%);
+      pointer-events: none;
+    }
+
+    .video-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: clamp(24px, 6vw, 64px);
+      z-index: 2;
+      text-align: center;
+      padding: 0 24px;
+    }
+
+    .video-caption p {
+      margin: 0;
+      display: inline-block;
+      font-family: 'Poppins', Inter, ui-sans-serif, system-ui, sans-serif;
+      font-weight: 600;
+      letter-spacing: -.01em;
+      font-size: clamp(1.15rem, 2.6vw, 2rem);
+      color: #fff;
+      text-shadow: 0 2px 18px rgba(0,0,0,.35);
     }
 
     @media (max-width: 860px) {
@@ -614,6 +646,96 @@
     .accordion-panel ul { display: grid; gap: 6px; margin: 0; padding-left: 18px; }
     .modal-disclaimer { margin-top: 18px; padding: 14px; border-radius: 12px; background: var(--soft-blue); color: #29415f; font-size: 13px; }
 
+    .resources { background: var(--soft); }
+
+    .resources h2.section-title {
+      text-align: center;
+      font-size: 1.7rem;
+      margin: 0 0 32px;
+    }
+
+    .resource-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-bottom: 30px;
+    }
+
+    .resource-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 24px 22px;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .resource-card h3 {
+      margin: 0;
+      font-size: 1rem;
+      letter-spacing: .01em;
+      color: var(--navy);
+    }
+
+    .resource-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.55;
+      flex: 1;
+    }
+
+    .resource-card a.resource-link {
+      margin-top: 4px;
+      font-weight: 750;
+      font-size: 13.5px;
+      color: var(--blue);
+    }
+
+    .resource-card a.resource-link:hover { text-decoration: underline; }
+
+    .resource-groups {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: var(--shadow-soft);
+      padding: 6px 34px 10px;
+    }
+
+    .resource-groups .accordion-panel a {
+      color: var(--blue);
+      font-weight: 650;
+    }
+
+    .resource-groups .accordion-panel a:hover { text-decoration: underline; }
+
+    .resource-groups .accordion-panel .link-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 10px;
+    }
+
+    .resource-groups .sub-heading {
+      display: block;
+      margin: 12px 0 4px;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .resource-groups .sub-heading:first-child { margin-top: 0; }
+
+    @media (max-width: 860px) {
+      .resource-cards { grid-template-columns: 1fr 1fr; }
+      .resource-groups { padding: 6px 22px 10px; }
+    }
+
+    @media (max-width: 560px) {
+      .resource-cards { grid-template-columns: 1fr; }
+    }
+
+
     @media (max-width: 1040px) {
       .brand img { width: 132px; }
       .nav-wrap { gap: 22px; }
@@ -713,6 +835,7 @@
         <a href="#services">Services</a>
         <a href="#insurance">Insurance</a>
         <a href="#contact">Contact</a>
+        <a href="#resources">Resources</a>
       </nav>
 
       <div class="header-actions">
@@ -733,6 +856,7 @@
         <a href="#services">Services</a>
         <a href="#insurance">Insurance</a>
         <a href="#contact">Contact</a>
+        <a href="#resources">Resources</a>
         <a href="https://www.facebook.com/comfortfamilyclinic/" target="_blank" rel="noopener">Facebook</a>
         <a class="btn btn-primary" href="tel:+13108163111">Call Now</a>
         <a class="btn btn-secondary" href="https://www.google.com/maps/dir/?api=1&destination=936+Wilmington+Blvd,+Wilmington,+CA+90744" target="_blank" rel="noopener">Get Directions</a>
@@ -742,6 +866,7 @@
 
   <div class="video-banner" aria-label="Comfort Family Clinic video">
     <video src="./assets/hero-video.mp4" poster="./assets/hero-video-poster.jpg" autoplay muted loop playsinline></video>
+    <div class="video-caption"><p>A healthy family starts with comfortable care.</p></div>
   </div>
 
   <main id="top">
@@ -871,6 +996,109 @@
             <div class="visit-line"><span class="small-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/></svg></span><span>936 Wilmington Blvd,<br />Wilmington, CA 90744</span></div>
             <div class="visit-line"><span class="small-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.28-.28.67-.36 1.02-.25 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2Z"/></svg></span><a href="tel:+13108163111">(310) 816-3111</a></div>
             <div class="visit-line"><span class="small-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 3v3M17 3v3M4 8h16M5 5h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/></svg></span><span>Closed on holidays and the<br />last Friday of every month.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="resources" class="resources">
+      <div class="container">
+        <h2 class="section-title">Helpful Links</h2>
+
+        <div class="resource-cards">
+          <div class="resource-card">
+            <h3>Vaccine Questions?</h3>
+            <p>Find information and links to answer many common questions on childhood immunization.</p>
+            <a class="resource-link" href="http://www.cdc.gov/vaccines/schedules/index.html" target="_blank" rel="noopener">Visit CDC Vaccine Schedules →</a>
+          </div>
+          <div class="resource-card">
+            <h3>HealthyChildren.org</h3>
+            <p>A parenting website produced by the American Academy of Pediatrics, with general child health info and specific parenting guidance.</p>
+            <a class="resource-link" href="https://www.healthychildren.org" target="_blank" rel="noopener">Visit HealthyChildren.org →</a>
+          </div>
+          <div class="resource-card">
+            <h3>American Academy of Pediatrics</h3>
+            <p>Dedicated to the health and well-being of infants, children, adolescents, and young adults.</p>
+            <a class="resource-link" href="https://www.aap.org" target="_blank" rel="noopener">Visit AAP.org →</a>
+          </div>
+          <div class="resource-card">
+            <h3>Nutrition</h3>
+            <p>Practical tools and resources to help families build healthier diets and make better food choices.</p>
+            <a class="resource-link" href="http://www.choosemyplate.gov" target="_blank" rel="noopener">Visit ChooseMyPlate.gov →</a>
+          </div>
+        </div>
+
+        <div class="resource-groups">
+          <div class="accordion">
+            <button type="button">Pediatric Websites <span class="chev">⌄</span></button>
+            <div class="accordion-panel">
+              <ul>
+                <li><a href="http://www.aap.org/" target="_blank" rel="noopener">American Academy of Pediatrics</a></li>
+                <li><a href="http://childstats.gov/americaschildren/" target="_blank" rel="noopener">America's Children in Brief: Key National Indicators of Well-Being</a></li>
+                <li><a href="http://www.ahrq.gov/health-care-information/priority-populations/children/index.html" target="_blank" rel="noopener">Agency for Healthcare Research and Quality: Child and Adolescent Health</a></li>
+                <li><a href="https://www.nichd.nih.gov/Pages/index.aspx" target="_blank" rel="noopener">National Institute of Child Health and Human Development</a></li>
+                <li><a href="http://www.ucl.ac.uk/ich" target="_blank" rel="noopener">UK Center for Evidence-Based Child Health</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="accordion">
+            <button type="button">General Healthcare Websites <span class="chev">⌄</span></button>
+            <div class="accordion-panel">
+              <ul>
+                <li><a href="https://www.nlm.nih.gov/" target="_blank" rel="noopener">U.S. National Library of Medicine</a> — databases and electronic information resources</li>
+                <li><a href="http://www.pubmed.gov/" target="_blank" rel="noopener">PubMed</a> — free MEDLINE search engine with over 12 million citations</li>
+                <li><a href="http://www.cdc.gov/" target="_blank" rel="noopener">U.S. Centers for Disease Control</a> — infectious diseases, immunizations, and international travel</li>
+                <li><a href="http://www.guideline.gov/" target="_blank" rel="noopener">U.S. National Guideline Clearinghouse</a></li>
+                <li><a href="http://www.ahrq.gov/" target="_blank" rel="noopener">Agency for Healthcare Research and Quality</a> — prevention guidance based on U.S. Preventive Services Task Force recommendations</li>
+                <li><a href="http://www.healthfinder.gov/" target="_blank" rel="noopener">Healthfinder.gov</a> — reliable health information from the U.S. Dept. of Health and Human Services</li>
+                <li><a href="https://nccih.nih.gov/" target="_blank" rel="noopener">National Center for Complementary and Alternative Medicine</a></li>
+                <li><a href="http://www.generalpediatrics.com/" target="_blank" rel="noopener">RWJ Funded General Pediatric Directory</a> — Donna M. D'Alessandro, MD, University of Iowa</li>
+                <li><a href="http://www.rarediseases.org/" target="_blank" rel="noopener">National Organization of Rare Disorders</a></li>
+                <li><a href="http://www.cebm.net/" target="_blank" rel="noopener">Oxford Center for Evidence-Based Medicine</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="accordion">
+            <button type="button">More Pediatric Websites <span class="chev">⌄</span></button>
+            <div class="accordion-panel">
+              <p style="margin:0 0 10px;">The medical resources listed below are provided for informational use only and do not replace the direct advice of a healthcare professional. Please contact our office for specific questions about your child's health.</p>
+
+              <span class="sub-heading">KidsHealth</span>
+              <div class="link-row">
+                <a href="http://kidshealth.org/parent/firstaid_safe/emergencies/burns.html" target="_blank" rel="noopener">Burns</a> ·
+                <a href="http://kidshealth.org/parent/infections/cold_flu_review/cold.html" target="_blank" rel="noopener">Common Cold</a> ·
+                <a href="http://kidshealth.org/parent/infections/fungal/diaper_rash.html" target="_blank" rel="noopener">Diaper Rash</a> ·
+                <a href="http://kidshealth.org/parent/medical/digestive/diarrhea.html" target="_blank" rel="noopener">Diarrhea</a> ·
+                <a href="http://kidshealth.org/parent/general/body/fever.html" target="_blank" rel="noopener">Fever &amp; Taking Your Child's Temperature</a> ·
+                <a href="http://kidshealth.org/parent/firstaid_safe/emergencies/head_injury.html" target="_blank" rel="noopener">Head Injuries</a> ·
+                <a href="http://kidshealth.org/parent/infections/bacterial_viral/flu.html" target="_blank" rel="noopener">Influenza</a> ·
+                <a href="http://kidshealth.org/parent/firstaid_safe/emergencies/insect_bite.html" target="_blank" rel="noopener">Insect Stings &amp; Bites</a> ·
+                <a href="http://kidshealth.org/parent/firstaid_safe/emergencies/nose_bleed.html" target="_blank" rel="noopener">Nosebleeds</a> ·
+                <a href="http://kidshealth.org/parent/firstaid_safe/emergencies/vomit.html" target="_blank" rel="noopener">Vomiting</a>
+              </div>
+
+              <span class="sub-heading">American Academy of Pediatrics</span>
+              <div class="link-row">
+                <a href="http://healthychildren.org/" target="_blank" rel="noopener">Healthy Children</a> — the AAP's official site with a wealth of information for parents
+              </div>
+
+              <span class="sub-heading">Centers for Disease Control</span>
+              <div class="link-row">
+                <a href="http://www.cdc.gov/travel/" target="_blank" rel="noopener">Traveler's Health</a> — up-to-date recommendations before and during travel abroad
+              </div>
+              <div class="link-row">
+                <a href="http://www.cdc.gov/vaccines/vac-gen/default.htm" target="_blank" rel="noopener">Vaccines &amp; Immunizations: Basic and Common Questions</a>
+              </div>
+
+              <span class="sub-heading">Other Helpful Links</span>
+              <div class="link-row">
+                <a href="http://www.calpoison.org/" target="_blank" rel="noopener">California Poison Control</a> ·
+                <a href="http://www.millerchildrenshospitallb.org/index.php" target="_blank" rel="noopener">Miller Children's Hospital</a> ·
+                <a href="http://www.longbeach.gov/health/" target="_blank" rel="noopener">Long Beach Dept. of Health &amp; Human Services</a> ·
+                <a href="https://www.choosemyplate.gov/" target="_blank" rel="noopener">ChooseMyPlate.gov</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
